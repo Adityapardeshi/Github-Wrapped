@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #e040a0;
+  --secondary: #7c52aa;
+  --tertiary: #0096cc;
+  --background: #fef7ff;
+  --white: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --shadow-pink: rgba(224, 64, 160, 0.2);
+  --shadow-purple: rgba(124, 82, 170, 0.18);
+  --neutral: #604868;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--background);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
