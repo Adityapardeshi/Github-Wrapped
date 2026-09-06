@@ -1,0 +1,130 @@
+/* 
+  GitWrapped '24 - Animated Candy Background 
+  A vibrant, shifting radial gradient with floating decorative elements.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.instrument-font {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700; /* Use 700 or 900 for the bold display look */
+}
+
+.instrument-font-light{
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 150;
+}
+
+:root {
+  --primary: #e040a0;
+  --primary-glow: rgba(224, 64, 160, 0.15);
+  --secondary: #6366f1;
+  --secondary-glow: rgba(99, 102, 241, 0.1);
+  --bg-color: #ffffff;
+}
+
+.candy-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Shifting Ambient Glows */
+.candy-background::before,
+.candy-background::after {
+  content: '';
+  position: absolute;
+  width: 80vmax;
+  height: 80vmax;
+  filter: blur(80px);
+  opacity: 0.4;
+  border-radius: 50%;
+  z-index: 0;
+  animation: mesh-move 20s infinite alternate ease-in-out;
+}
+
+.candy-background::before {
+  background: radial-gradient(circle, var(--primary), transparent 70%);
+  top: -20%;
+  left: -10%;
+}
+
+.candy-background::after {
+  background: radial-gradient(circle, var(--secondary), transparent 70%);
+  bottom: -20%;
+  right: -10%;
+  animation-delay: -10s;
+}
+
+@keyframes mesh-move {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10%, 15%) scale(1.1); }
+  100% { transform: translate(-5%, 5%) scale(1); }
+}
+
+/* Floating Decorative Elements */
+.floating-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-icon {
+  position: absolute;
+  color: var(--primary);
+  opacity: 0.12;
+  animation: float 12s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* Example usage in HTML:
+<div class="candy-background">
+  <div class="floating-elements">
+     <!-- Icons or shapes can be placed here -->
+  </div>
+</div>
+*/
+
+.icon-1 {
+  top: 15%;
+  left: 10%;
+  font-size: 40px;
+}
+
+.icon-2 {
+  top: 25%;
+  right: 15%;
+  font-size: 56px;
+  animation-delay: -3s;
+}
+
+.icon-3 {
+  bottom: 20%;
+  left: 20%;
+  font-size: 40px;
+  color: #6366f1;
+  animation-delay: -6s;
+}
+
+.icon-4 {
+  bottom: 15%;
+  right: 10%;
+  font-size: 45px;
+  color:#ff6ffa;
+  animation-delay: -9s;
+}
+
+.icon-5 {
+  top: 55%;
+  left: 50%;
+  font-size: 45px;
+  animation-delay: -2s;
+}
