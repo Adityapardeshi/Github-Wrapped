@@ -5,37 +5,31 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Streak } from "./Cards/Streak";
 import { useState } from "react";
 
-export function Card() {
-  const data = [
+export function Card({ wrappedData }) {
+  const commitData = [
     {
       title: "THE NUMBERS",
-      heading: "2,450",
+      heading: String(wrappedData?.commitStats?.totalCommits ?? 0),
       desc: "Total Commits in 2026",
       data: [
-        {
-          1: "143k",
-          2: "Additions",
-        },
-        {
-          1: "84k",
-          2: "Deletions",
-        },
+        [1, String(wrappedData?.commitStats?.additions ?? 0), "Additions"],
+        [2, String(wrappedData?.commitStats?.deletions ?? 0), "Deletions"],
       ],
     },
   ];
 
-  const [current, Setcurrent] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   const nextSlide = () => {
-    Setcurrent((prev) => (prev + 1)%2)
+    setCurrent((prev) => (prev + 1) % 2)
   }
 
-  const prevSlide = () =>{
-    Setcurrent((prev) => (prev - 1 + 2)%2)
+  const prevSlide = () => {
+    setCurrent((prev) => (prev - 1 + 2) % 2)
   }
 
   return (
-    <div className="mt-28 flex flex-col items-center justify-center">
+    <div className="mt-38 flex flex-col items-center justify-center">
 
       {/* Cards container */}
       <div className="w-full max-w-xl overflow-hidden">
@@ -44,13 +38,15 @@ export function Card() {
         <div className="flex transition-transform ease-in-out duration-550" style={{transform : `translateX(-${current * 100}%)`}}>
           {/* Card 1 */}
           <div className="flex w-full shrink-0 justify-center">
-            <Commits data={data} />
+            <Commits data={commitData} />
           </div>
 
           {/* Card 2 */}
           <div className="flex w-full shrink-0 justify-center">
-            <Streak />
+            <Streak streak={wrappedData?.streak} />
           </div>
+
+          <div></div>
         </div>
 
       </div>
@@ -73,7 +69,6 @@ export function Card() {
         >
           Next
         </button>
-
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-export function Streak(){
+export function Streak({streak}){
     return(
         <>
             <div className="glass-card card items-center justify-content-center">
@@ -6,7 +6,7 @@ export function Streak(){
                         THE STREAK
                     </div>
                     <div className="card-body text-5xl" style={{color: 'var(--primary)'}}>
-                        42 Days
+                        {streak?.longestStreak ?? 0}
                     </div>
                     <div className="card-body font-normal text-sm" style={{color: 'var(--neutral)'}}>
                         <p>You were on fire&#128293;</p>
